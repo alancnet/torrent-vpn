@@ -3,3 +3,7 @@ dev tun
 ifconfig 10.8.0.2 10.8.0.1
 secret static.key
 route 0.0.0.0 0.0.0.0
+keepalive 10 60
+ping-timer-rem
+persist-tun
+persist-key

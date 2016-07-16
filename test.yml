@@ -11,5 +11,7 @@ services:
     links:
       - remote
     privileged: true
+    ports:
+      - 19091:39091
     
       
