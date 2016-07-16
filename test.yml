@@ -1,0 +1,15 @@
+version: '2.0'
+services:
+  remote:
+    image: torrent-vpn-remote
+    privileged: true
+#    command: --dhcp-range=10.1.2.100,10.1.2.200,255.255.255.0
+  local:
+    image: torrent-vpn-local
+    environment:
+      - VPN_HOST=remote
+    links:
+      - remote
+    privileged: true
+    
+      
