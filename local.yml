@@ -1,0 +1,27 @@
+version: '2.0'
+services:
+  local:
+    image: torrent-vpn-local
+    environment:
+      - VPN_HOST=$VPN_HOST
+    privileged: true
+    ports:
+      - 19091:39091
+    volumes:
+      - /media/data-4/transmission-daemon/lib:/var/lib/transmission-daemon
+      - ./etc/transmission-daemon:/etc/transmission-daemon
+    restart: always
+  port-forward:
+    image: pwes/port-forwarder
+    network_mode: host
+    ports:
+      - 39091:39091
+    environment:
+      - REMOTE_HOST=local
+      - REMOTE_PORT=39091
+    command: 39091 192.168.0.100:19091
+    restart: always
+    
+      
+    
+      
